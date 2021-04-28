@@ -2,20 +2,64 @@
 <html>
 <head>
   <% include ../includes/header.ejs %>
+  
 </head>
 
 <body>
   <% include ../includes/nav.ejs %>
-<div class="jumbotron text-center">
-  <div class="container">
-    <h1><%= title %></h1>
-    <p>This is the placeholder for Team Activity 02</p>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1><%= title %></h1>
+    </div>
   </div>
-</div>
-<div class="container">
-  
-</div>
 
+  <div class="container">
+
+    <!-- Error messages For stretch challenges -->
+    <% if(error !== 0) { %>
+      <p id="error" style="color: red;">
+        <% if(error === 1) { %>
+          Error! Username does not exist.
+        <% } else if(error === 2) { %>
+          Error! That Username is already in use.
+        <% } %>
+      </p>
+    <% }else { %>
+      <script>
+        document.getElementById("error").innerHTML = (" ");
+      </script>
+    <% } %>
+    <!-- Error messages For stretch challenges -->
+    
+    <div>
+      <!-- This is the form for the first requirement -->
+      <form action="/ta02/addUser" method="POST">
+        <label for="newUser">New Username: </label>
+        <input type="text" name="newUser">
+        <button type="submit">Submit</button>
+      </form>
+      <!-- This is the form for the first requirement -->
+    </div>
+
+    <div>
+      <!-- This is the form for the third requirement -->
+      <form action="/ta02/removeUser" method="POST">
+        <label for="remUser">Username to remove: </label>
+        <input type="text" name="remUser">
+        <button type="submit">Submit</button>
+      </form>
+      <!-- This is the form for the third requirement -->
+    </div>
+
+    <div>
+      <!-- Loop for the first requirement -->
+      <h2>Users: </h2>
+      <% for(user of users) { %>
+        <p><%= user %></p>
+      <% } %>
+      <!-- Loop for the first requirement -->
+    </div>
+  </div>
 
 </body>
 </html>
