@@ -77,3 +77,20 @@ p::before{
     font-weight: bold;
 }
 
+.returnLink {
+    border: 2px black ridge;
+    padding: 1em;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+    width: fit-content;
+    background: whitesmoke;
+    text-decoration: none;
+    color: black;
+}
+
+.returnLink:hover {
+    background-color: gray;
+    color: blanchedalmond;
+    text-shadow: black 2px 1px 1px;
+}
