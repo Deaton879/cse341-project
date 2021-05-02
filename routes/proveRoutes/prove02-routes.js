@@ -22,6 +22,7 @@ router.post('/display', (req, res, next) => {
         summaries: bookSummaries,
 
         path: '/prove02/display',
+        activeTA03: true, // For HBS
         contentCSS: true
     });
     res.redirect('pages/provePages/display');
@@ -33,10 +34,11 @@ router.get('/', (req, res, next) => {
         title: '02 Prove Assignment',
         summaries: bookSummaries,
 
-        path: '/prove02/',
+        path: '/prove02',
+        activeTA03: true, // For HBS
         contentCSS: true
-
     });
+    res.redirect('pages/provePages/index');
 });
 
 module.exports = router;
