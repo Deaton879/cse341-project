@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <% include C:\Users\deato\Desktop\WebBackend2\cse341-project-master\views\includes\p2header.ejs %>
+    </head>
+
+    <body>
+        <main>
+            <div class="header">
+                <h1><%= title %></h1>
+            </div>
+            
+            <% for(book of summaries) { %>
+                <section class="container">
+                    <h3><%= book.bookTitle %></h3>
+                    <p><%= book.bookSummary %></p>
+                </section>
+            <% } %>
+            
+        </main>
+
+    </body>
+</html>

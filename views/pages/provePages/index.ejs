@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include C:\Users\deato\Desktop\WebBackend2\cse341-project-master\views\includes\p2header.ejs %>
+  </head>
+
+  <body>
+  <main>
+    <div class="header">
+      <h1><%= title %></h1>
+    </div>
+    <div class="container">
+      <form action="/display" method="POST">
+          <label for="title">Title of Book: </label><br>
+          <input type="text" name="title" required><br><br>
+          <label for="summary">Write a  Summary:</label><br>
+          <textarea cols="50" rows="10" name="summary" placeholder="Write your summary here.." required></textarea><br>
+          <button type="submit">Submit Summary</button>
+      </form>
+    </div>
+  </main>
+
+  </body>
+</html>
