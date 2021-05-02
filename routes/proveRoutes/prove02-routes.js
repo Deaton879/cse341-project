@@ -38,7 +38,7 @@ router.get('/', (req, res, next) => {
         activeTA03: true, // For HBS
         contentCSS: true
     });
-    res.redirect('pages/provePages/index');
+
 });
 
 module.exports = router;
