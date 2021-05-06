@@ -1,14 +1,36 @@
-//TA03 PLACEHOLDER
-const express = require('express');
-const router = express.Router();
+const https = require('https');
 
-router.get('/',(req, res, next) => {
-    res.render('pages/ta03', { 
-        title: 'Team Activity 03', 
-        path: '/ta03', // For pug, EJS 
-        activeTA03: true, // For HBS
-        contentCSS: true, // For HBS
+
+function processJson(req, res) {
+        const source = 'https://byui-cse.github.io/cse341-course/lesson03/items.json'
+
+    https.get(source, function(response){
+        let body = '';
+
+        response.on('data', function(chunk){
+            body += chunk;
+        });
+
+        response.on('end', function(){
+            let jsonResponse = JSON.parse(body);
+            console.log("Got a response: ", jsonResponse);
+            let stuff = {data:jsonResponse, path:'/ta03/'}
+
+            res.render('pages/ta03', stuff);
+
+            // var outputFilename = 'my.json';
+
+            //    fs.writeFile(outputFilename, JSON.stringify(jsonResponse, null, 4), function(err) {
+            //       if(err) {
+            //          console.log(err);
+            //       } else {
+            //          console.log("JSON saved to " + outputFilename);
+            //       }
+            //    }); 
+        });
+    }).on('error', function(e){
+        console.log("Got an error: ", e);
     });
-});
+}
 
-module.exports = router;
+module.exports = {processJson: processJson};

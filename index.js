@@ -22,10 +22,8 @@ const app = express();
 const ta01Routes = require('./routes/teamRoutes/ta01');
 const ta02Routes = require('./routes/teamRoutes/ta02');
 const ta03Routes = require('./routes/teamRoutes/ta03'); 
-const ta04Routes = require('./routes/teamRoutes/ta04');
-//const prove01Routes = require('./routes/proveRoutes/prove01-routes'); 
+const ta04Routes = require('./routes/teamRoutes/ta04'); 
 const prove02Routes = require('./routes/proveRoutes/prove02-routes'); 
-
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -39,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use(bodyParser({extended: false})) // For parsing the body of a POST
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
-   .use('/ta03', ta03Routes) 
+   .use('/ta03', ta03Routes.processJson) 
    .use('/ta04', ta04Routes)
    //.use('/prove01', prove01Routes)
    .use('/prove02', prove02Routes)
