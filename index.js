@@ -23,7 +23,10 @@ const ta01Routes = require('./routes/teamRoutes/ta01');
 const ta02Routes = require('./routes/teamRoutes/ta02');
 const ta03Routes = require('./routes/teamRoutes/ta03'); 
 const ta04Routes = require('./routes/teamRoutes/ta04'); 
-const prove02Routes = require('./routes/proveRoutes/prove02-routes'); 
+const prove02Routes = require('./routes/proveRoutes/prove02-routes');
+const projectAdmin = require('./routes/projectRoutes/admin');
+const projectShop = require('./routes/projectRoutes/shop'); 
+const errors = require('./controllers/error');
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -42,12 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.use('/prove01', prove01Routes)
    .use('/prove02', prove02Routes)
    .use('/prove02/display', prove02Routes)
+   .use('/admin', projectAdmin)
+   .use('/shop', projectShop)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
     })
-   .use((req, res, next) => {
-     // 404 page
-     res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
-   })
+   .use(errors.get404)
    .listen(PORT, () => console.log(`Listening on ${ PORT }`));

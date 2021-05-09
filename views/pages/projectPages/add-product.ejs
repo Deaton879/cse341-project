@@ -1,0 +1,24 @@
+<% include ../../includes/projectHeader.ejs %>
+
+
+    <% include ../../includes/projectNav.ejs %>
+    
+    <main>
+        <form class="product-form" action="/admin/add-product" method="POST">
+            <div class="form-control">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title"><br>
+                <label for="price">Price:</label>
+                <input type="text" name="price" id="price" placeholder="ex: $5.99"><br>
+                <label for="desc">Product Description:</label>
+                <input type="text" name="desc" id="desc"><br>
+                <label for="img">Image URL:</label>
+                <input type="text" name="img" id="img" value="https://picsum.photos/200/300"><br>
+            </div>
+
+            <button class="btn" type="submit">Add Product</button>
+        </form>
+    </main>
+</body>
+
+<% include ../../includes/projectFoot.ejs %>
