@@ -24,9 +24,11 @@ const ta02Routes = require('./routes/teamRoutes/ta02');
 const ta03Routes = require('./routes/teamRoutes/ta03'); 
 const ta04Routes = require('./routes/teamRoutes/ta04'); 
 const prove02Routes = require('./routes/proveRoutes/prove02-routes');
+const prove03Routes = require('./routes/proveRoutes/prove08-routes');
 const projectAdmin = require('./routes/projectRoutes/admin');
 const projectShop = require('./routes/projectRoutes/shop'); 
 const errors = require('./controllers/error');
+
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -45,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.use('/prove01', prove01Routes)
    .use('/prove02', prove02Routes)
    .use('/prove02/display', prove02Routes)
+   .use('/prove08', prove03Routes)
    .use('/admin', projectAdmin)
    .use('/shop', projectShop)
    .get('/', (req, res, next) => {
