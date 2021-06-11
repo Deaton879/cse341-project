@@ -20,7 +20,13 @@ const renderIndex = (req, res, json) => {
         title: 'Week 8 Prove Assignment',
         searchedValue: searchedValue,
         page: page,
-        numPages: Math.ceil(filteredData.length / ITEM_LIMIT)
+        firstPage: 1,
+        lastPage: indexEnd,
+        hasPreviousPage: page > 1,
+        nextPage: parseInt(page) + 1,
+        previousPage: page - 1,
+        numPages: Math.ceil(filteredData.length / ITEM_LIMIT),
+        hasNextPage: page < indexEnd
     }
 
     res.render('pages/provePages/prove08.ejs', stuff)

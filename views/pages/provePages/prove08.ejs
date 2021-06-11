@@ -10,7 +10,29 @@
    <% include ../../includes/nav.ejs %>
    <div class="container">
       
-      <h1>JSON Results</h1>
+      <h1>JSON Results</h1><hr>
+
+      <!-- Pagination button generation -->
+      <form class="actions container pagination">
+         <% if(page > 1) { %>
+            <a href="?page=1<%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==1) ? 'btn-primary' : 'btn-default' %>">First</a>
+         <% } %>
+      
+         <% if(hasPreviousPage) { %>
+            <a href="?page=<%= previousPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==previousPage) ? 'btn-primary' : 'btn-default' %>"> Prev</a>
+         <% } %>
+
+         <a href="?page=<%= page %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==page) ? 'btn-primary' : 'btn-default' %>"><%= page %></a>
+         
+         <!-- <% if(hasNextPage) { %>
+            
+         <% } %> -->
+
+         <% if(page < numPages) { %>
+            <a href="?page=<%= nextPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==nextPage) ? 'btn-primary' : 'btn-default' %>">Next</a>
+            <a href="?page=<%= numPages %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==numPages) ? 'btn-primary' : 'btn-default' %>">Last</a>
+         <% } %>
+      </form><hr>
       <% for(var i=0; i<data.length; i++) {%>
          <% if(i % 3 == 0) { %> 
             <div class="card-deck">
@@ -28,13 +50,29 @@
             <br>
          <% } %>   
       <% } %>
-   </div>
+   </div><hr>
 
    <!-- Pagination button generation -->
-   <form class="actions container">
-      <% for(var i = 1; i <= numPages; i++) { %>
-      <a href="?page=<%= i %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==i) ? 'btn-primary' : 'btn-default' %>"><%= i %></a>
+   <form class="actions container pagination">
+      <% if(page > 1) { %>
+         <a href="?page=1<%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==1) ? 'btn-primary' : 'btn-default' %>">First</a>
+      <% } %>
+   
+      <% if(hasPreviousPage) { %>
+         <a href="?page=<%= previousPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==previousPage) ? 'btn-primary' : 'btn-default' %>"> Prev</a>
+      <% } %>
+
+      <a href="?page=<%= page %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==page) ? 'btn-primary' : 'btn-default' %>"><%= page %></a>
+      
+      <!-- <% if(hasNextPage) { %>
+         
+      <% } %> -->
+
+      <% if(page < numPages) { %>
+         <a href="?page=<%= nextPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==nextPage) ? 'btn-primary' : 'btn-default' %>">Next</a>
+         <a href="?page=<%= numPages %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==numPages) ? 'btn-primary' : 'btn-default' %>">Last</a>
       <% } %>
    </form>
+   <hr>
 </body>
 </html>
