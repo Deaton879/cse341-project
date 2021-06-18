@@ -28,6 +28,7 @@ const prove03Routes = require('./routes/proveRoutes/prove08-routes');
 const projectAdmin = require('./routes/projectRoutes/admin');
 const projectShop = require('./routes/projectRoutes/shop'); 
 const errors = require('./controllers/error');
+const prove09 = require('./routes/proveRoutes/prove09-routes');
 
 
 
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/prove02', prove02Routes)
    .use('/prove02/display', prove02Routes)
    .use('/prove08', prove03Routes)
+   .use('/prove09', prove09)
    .use('/admin', projectAdmin)
    .use('/shop', projectShop)
    .get('/', (req, res, next) => {

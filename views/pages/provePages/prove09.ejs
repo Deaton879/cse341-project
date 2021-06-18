@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../../includes/header.ejs %>
+<link href="/stylesheets/results.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<% include ../../includes/nav.ejs %>
+<div class="container">
+    <h1>Pokemon:</h1>
+    <ul id="pokeList" class="">
+    </ul>
+    
+    <div class="actions container pagination">
+        <a id="firstBtn" class="btn-default btn">First</a>
+        <a id="prevBtn" class="btn-default btn">Previous</a>
+        <a id="currentBtn" class="btn-primary btn"></a>
+        <a id="nextBtn" class="btn-default btn">Next</a>
+        <a id="lastBtn" class="btn-default btn">Last</a>
+        
+    </div>
+</div>
+<script src="/scripts/pokemon.js"></script>
+</body>
+</html>
