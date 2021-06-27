@@ -1,0 +1,26 @@
+<% include ../../includes/header.ejs %>
+        <link href="/stylesheets/results.css" rel="stylesheet" type="text/css" />
+        <style>
+            #error { 
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+    <% include ../../includes/nav.ejs %>
+        <div class="container">
+            <h1>Names:</h1>
+            <ul id="nameList" class="">
+            </ul>
+            <h2>Submit a name</h2>
+            <span id="error"></span><br>
+            <div class="actions_container">
+                <input type="text" id="newName">
+                <button id="submitName" onclick="submitName()">Submit</button>
+            </div>
+            
+        </div>
+
+        <script src="/scripts/prove10-client.js"></script>
+    </body>
+</html>
