@@ -12,7 +12,6 @@
     "prove01": "nodemon prove01.js",
     "prove02": "nodemon prove02.js",
     "team03": "node ta03.js"
-    
   },
   "dependencies": {
     "ejs": "^2.5.6",
@@ -20,7 +19,9 @@
     "express-handlebars": "^3.0.2",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.7",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "socket.io": "^4.1.2",
+    "socket.io-client": "^4.1.2"
   },
   "devDependencies": {
     "request": "^2.81.0",

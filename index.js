@@ -14,9 +14,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
+const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
 
 const app = express();
+
 
 // Route setup. You can implement more in the future!
 const ta01Routes = require('./routes/teamRoutes/ta01');
@@ -29,7 +30,9 @@ const projectAdmin = require('./routes/projectRoutes/admin');
 const projectShop = require('./routes/projectRoutes/shop'); 
 const errors = require('./controllers/error');
 const prove09 = require('./routes/proveRoutes/prove09-routes');
-const prove10 = require('./routes/proveRoutes/prove10-server')
+const prove10 = require('./routes/proveRoutes/prove10-server');
+const prove11 = require('./routes/proveRoutes/prove11-server');
+
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -51,11 +54,26 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/prove08', prove03Routes)
    .use('/prove09', prove09)
    .use('/prove10', prove10)
+   .use('/prove11', prove11)
    .use('/admin', projectAdmin)
    .use('/shop', projectShop)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
     })
-   .use(errors.get404)
-   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+   .use(errors.get404);
+   //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+
+  socket.on('new-name', () => {
+    // Someone added a name! Tell everyone else to update the list.
+    socket.broadcast.emit('update-list');
+  });
+
+});

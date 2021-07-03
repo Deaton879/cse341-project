@@ -1,0 +1,29 @@
+<% include ../../includes/header.ejs %>
+        <link href="/stylesheets/results.css" rel="stylesheet" type="text/css" />
+        <style>
+            #error { 
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+    <% include ../../includes/nav.ejs %>
+        <div class="container">
+            <h1>Super Heroes:</h1>
+            <ul id="nameList" class="">
+            </ul>
+            <h2>Add a New Hero</h2>
+            <span id="error"></span><br>
+            <div class="actions_container">
+                <label for="newName">Name: </label>
+                <input type="text" id="newName">
+                <label for="power">Alias: </label>
+                <input type="text" id="alias">
+                <button id="submitName" onclick="submitName()">Submit</button>
+            </div>
+            
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/scripts/prove11-client.js"></script>
+    </body>
+</html>

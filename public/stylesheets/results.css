@@ -1,3 +1,6 @@
+body {
+   text-align: center;
+}
 .cCard {
     width: 200px; 
     height: 400px; 
@@ -17,9 +20,55 @@
 .pagination {
    text-align: center;
 }
- @media screen and (min-width: 900px) {
+
+.actions_container {
+   display: flex;
+   flex-direction: row;
+   width: 200px;
+   flex-flow: wrap;
+   margin: auto;
+}
+
+#submitName {
+   width: 200px;
+   margin-top: 1em;
+   font-weight: bolder;
+}
+
+label {
+   margin-top: 1em;
+}
+
+input {
+   width: 200px;
+}
+
+li {
+   list-style: none;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.b2::before {
+   content: "Alias: ";
+   color: midnightblue;
+   text-align: left;
+}
+
+.b2 {
+   color: maroon;
+}
+
+#nameList {
+   width: 350px;
+   margin: auto;
+   
+}
+
+@media screen and (min-width: 900px) {
    .card-deck {
       display: flex;
       justify-content: space-around;
-    }
- }
+   }
+}
